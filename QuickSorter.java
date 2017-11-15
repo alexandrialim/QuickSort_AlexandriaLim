@@ -15,28 +15,32 @@ public class QuickSorter {
 		 * Partition the integer array arr[] from lo to hi.
 		 * Should return the index of the pivot element.
 		 */
-		
-		int p = arr[(lo + hi) / 2]; // p = pivot num
-		int i= lo;
+		//System.out.println(lo + " " + hi);
+		int p = arr[lo]; // p = pivot num
+		int i= lo + 1;
 		int j = hi;
 		int temp;
-	while(i <= j){
-			while (arr[i] < p){
+	while(i < j){
+			while (arr[i] <= p && i < j){
 				i++;
-			while (arr[j] > p){
-				j--;		
+				
+			}
+				//System.out.println(lo + "  " + hi);
+			while (arr[j] >= p && j >= i){
+				j--;	
+				
+			}
+				//System.out.println(lo + "  " + hi);
 			if(i <= j){
 				temp = arr[i];
 				arr[i] = arr[j];
 				arr[j] = temp;
-				i++;
-				j--;
-				
-			} 
-			}
+				//i++;
+				//j--;
 			}
 	}
-	return i;
+	arr[0]= arr[i];
+	arr[j] = p;
+	return  j;
 	}
-	
 }
