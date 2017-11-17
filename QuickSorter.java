@@ -16,31 +16,37 @@ public class QuickSorter {
 		 * Should return the index of the pivot element.
 		 */
 		//System.out.println(lo + " " + hi);
-		int p = arr[lo]; // p = pivot num
-		int i= lo + 1;
-		int j = hi;
-		int temp;
-	while(i < j){
-			while (arr[i] <= p && i < j){
-				i++;
+		if(lo == hi){
+			return lo; 
+		}	
+		else {
+				int p = arr[lo]; // p = pivot num
+				int i= lo;
+				int j = hi;
+				int temp;
 				
-			}
-				//System.out.println(lo + "  " + hi);
-			while (arr[j] >= p && j >= i){
-				j--;	
-				
-			}
-				//System.out.println(lo + "  " + hi);
-			if(i <= j){
-				temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
-				//i++;
-				//j--;
-			}
-	}
-	arr[0]= arr[i];
-	arr[j] = p;
-	return  j;
-	}
+				while(i < j){
+						while (arr[i] <= p && i < hi){
+							i++;
+						}
+			
+						while (arr[j] >= p && j > lo){
+							j--;	
+						}
+						
+						if(i < j){
+							temp = arr[i];
+							arr[i] = arr[j];
+							arr[j] = temp;
+						}
+						
+						else {
+							break;
+						}
+				}
+				arr[lo]= arr[j];
+				arr[j] = p;
+				return  j;
+				}
+		}
 }
